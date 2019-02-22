@@ -82,15 +82,19 @@ function generateDoc(document, response) {
 	var handleText = (doc, content, continued) => {
 		if(content.marks && content.marks.length > 0) {
 			if(content.marks[0].type === 'shouting') {
-				doc.font('Courier-Bold')
+				doc.font('fonts/HelveticaNeueLTStd-Md.otf')
+				.fontSize(10)
+			} else {
+				return;
 			}
 		} else {
-			doc.font('Courier')
+			doc.font('fonts/HelveticaNeueLTStd-Lt.otf')
+			.fontSize(8.5)
 		}
-		doc.fontSize(25)
+		doc
 			.text(content.text, {continued});
 		if(!continued) {
-			doc.fontSize(25)
+			doc.fontSize(8.5)
 			.text(' ', {continued: false});
 		}
 	}

@@ -49,8 +49,9 @@ let starSchema = new Schema({
     star: {
       inline: true,
       group: "inline",
-      toDOM() { return ["star", "🟊"] },
-      parseDOM: [{tag: "star"}]
+      attrs: { id : {}},
+      toDOM(node) { return ["star", {id : node.attrs.id},"🟊"] },
+      parseDOM: [{tag: "star", getAttrs(dom) { return {id: dom.id} }}]
     },
     formula: {
       inline: true,
@@ -61,9 +62,10 @@ let starSchema = new Schema({
     },
     paragraph: {
       group: "block",
-      content: "(inline+) | (formula+)",
-      toDOM() { return ["p", 0] },
-      parseDOM: [{tag: "p"}]
+      content: "(inline*) | (formula*)",
+      attrs: { id : {}},
+      toDOM(node) { return ["p",{id : node.attrs.id}, 0] },
+      parseDOM: [{tag: "p", getAttrs(dom) { return {id: dom.id} }}]
     },
     boring_paragraph: {
       group: "block",
