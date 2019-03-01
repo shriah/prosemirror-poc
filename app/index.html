@@ -20,11 +20,28 @@
     background: #444;
   }
   p.boring { background: #eee; color: #444; }
-  span[title] { background: grey}
+  span[title].comment { background: grey}
   span[proforma="T1"] {background: blue; color: #aaa}
   span[proforma="T2"] {background: red; color: #aaa}
   shouting { display: inline; text-transform: uppercase; font-weight: bold; }
   star { display: inline; font-size: 190%; line-height: 1; vertical-align: -10%; color: #a8f; -webkit-text-stroke: 1px #75b; }
+    .menubar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    line-height: 0.1;
+  }
+  .menuicon {
+    display: inline-block;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    color: #888;
+    line-height: 1;
+    padding: 0 7px;
+    margin: 1px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 1.4em;
+  }
+  .strong, .heading { font-weight: bold; }
+  .em { font-style: italic; }
 </style>
 
 <div id="note-editor"></div>
@@ -34,9 +51,9 @@
 <div style="display: none">
   <div id="text-content">Such as this sentence.</div>
   <div id="star-content">
-    <p class="boring">This paragraph is ,boring, it can't have anything.</p>
-    <p id="test" >This paragraph is ,boring, it can't have anything.</p>
-    <formula >1+1</formula>
+    <p >This paragraph is ,boring, it can't have anything.</p>
+    <p id="test" >This paragraph is ,boring, it can't have anything.  <formula >1+1</formula></p>
+   
   </div>
 </div>
 <div><textarea id="state"></textarea></div>
